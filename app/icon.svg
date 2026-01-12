@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="#1a1a2e"/>
+
+  <!-- Bell body -->
+  <path d="M32 8c-10 0-18 8-18 18v10c0 2-1 4-3 5h42c-2-1-3-3-3-5V26c0-10-8-18-18-18z" fill="#f59e0b"/>
+
+  <!-- Bell bottom (clapper area) -->
+  <ellipse cx="32" cy="44" rx="12" ry="3" fill="#f59e0b"/>
+
+  <!-- Clapper -->
+  <circle cx="32" cy="50" r="4" fill="#f59e0b"/>
+
+  <!-- Tired left eye (droopy/half-closed) -->
+  <ellipse cx="25" cy="26" rx="4" ry="2" fill="#1a1a2e"/>
+  <path d="M21 24 Q25 26 29 24" stroke="#1a1a2e" stroke-width="2" fill="none"/>
+
+  <!-- Tired right eye (droopy/half-closed) -->
+  <ellipse cx="39" cy="26" rx="4" ry="2" fill="#1a1a2e"/>
+  <path d="M35 24 Q39 26 43 24" stroke="#1a1a2e" stroke-width="2" fill="none"/>
+
+  <!-- Tired mouth -->
+  <path d="M28 33 Q32 31 36 33" stroke="#1a1a2e" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <!-- ZZZ sleeping symbols -->
+  <text x="44" y="16" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#60a5fa">Z</text>
+  <text x="50" y="12" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#60a5fa">Z</text>
+  <text x="54" y="6" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#60a5fa">Z</text>
+</svg>
