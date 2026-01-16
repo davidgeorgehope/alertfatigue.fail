@@ -78,7 +78,7 @@ export function CTA() {
             </div>
             <div className="flex items-center gap-4">
               <a
-                href="https://linkedin.com/in/"
+                href="https://www.linkedin.com/company/elastic-co/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-terminal-muted hover:text-terminal-accent transition-colors"
@@ -86,7 +86,7 @@ export function CTA() {
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
-                href="https://twitter.com/"
+                href="https://x.com/elastic"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-terminal-muted hover:text-terminal-accent transition-colors"
