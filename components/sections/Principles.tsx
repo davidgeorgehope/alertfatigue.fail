@@ -4,31 +4,26 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Check, Copy } from 'lucide-react'
 
-const principles = [
+const faqs = [
   {
-    number: 1,
-    title: 'Make logs your first stop, not your last.',
-    description: 'Logs have the richest context. Stop treating them as a last resort.',
+    question: 'Where should I start when investigating incidents?',
+    answer: 'Make logs your first stop, not your last. Logs have the richest context—stop treating them as a last resort.',
   },
   {
-    number: 2,
-    title: 'Let AI organize and parse.',
-    description: "You have better things to do than write Grok patterns.",
+    question: 'How can I avoid writing complex log parsing patterns?',
+    answer: 'Let AI organize and parse your logs. You have better things to do than write Grok patterns manually.',
   },
   {
-    number: 3,
-    title: 'Surface signals automatically.',
-    description: "Don't make humans hunt for needles. Let the needles find you.",
+    question: 'How do I find important signals in noisy logs?',
+    answer: "Surface signals automatically. Don't make humans hunt for needles—let the needles find you.",
   },
   {
-    number: 4,
-    title: 'Alert on causes, not just symptoms.',
-    description: '"CPU is high" is a symptom. "Connection pool exhausted" is a cause.',
+    question: 'What should I alert on to reduce alert fatigue?',
+    answer: 'Alert on causes, not just symptoms. "CPU is high" is a symptom. "Connection pool exhausted" is a cause.',
   },
   {
-    number: 5,
-    title: 'Measure time to why, not just time to acknowledge.',
-    description: 'MTTA is vanity. Time to root cause is sanity.',
+    question: 'What metrics should I track for incident response?',
+    answer: 'Measure time to why, not just time to acknowledge. MTTA is vanity. Time to root cause is sanity.',
   },
 ]
 
@@ -56,17 +51,17 @@ export function Principles() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-terminal-text mb-4">
-            How to escape alert fatigue.
+            Frequently asked questions
           </h2>
           <p className="text-terminal-muted text-lg">
-            Five principles to transform your incident response.
+            How to escape alert fatigue and transform your incident response.
           </p>
         </motion.div>
 
         <div className="space-y-6">
-          {principles.map((principle, idx) => (
+          {faqs.map((faq, idx) => (
             <motion.div
-              key={principle.number}
+              key={idx}
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -75,16 +70,16 @@ export function Principles() {
             >
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-full bg-terminal-accent/20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-terminal-accent font-bold">{principle.number}</span>
+                  <span className="text-terminal-accent font-bold">Q</span>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-terminal-text mb-2">
-                    {principle.title}
+                  <h3 className="text-lg font-semibold text-terminal-text mb-3">
+                    {faq.question}
                   </h3>
-                  <p className="text-terminal-muted">{principle.description}</p>
+                  <p className="text-terminal-muted">{faq.answer}</p>
                 </div>
                 <button
-                  onClick={() => copyToClipboard(`${principle.title} ${principle.description}`, idx)}
+                  onClick={() => copyToClipboard(`Q: ${faq.question}\nA: ${faq.answer}`, idx)}
                   className="opacity-0 group-hover:opacity-100 transition-opacity p-2 hover:bg-terminal-bg rounded"
                   title="Copy to clipboard"
                 >
@@ -106,7 +101,7 @@ export function Principles() {
           className="mt-12 text-center"
         >
           <p className="text-terminal-muted text-sm">
-            Click on any principle to copy it. Share with your team.
+            Click any question to copy it. Share with your team.
           </p>
         </motion.div>
       </div>

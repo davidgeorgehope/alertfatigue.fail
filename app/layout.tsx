@@ -72,6 +72,52 @@ const jsonLd = {
       },
       'publisher': { '@id': 'https://www.elastic.co/#organization' },
       'mainEntityOfPage': { '@id': 'https://alertfatigue.fail/#webpage' }
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': 'https://alertfatigue.fail/#faq',
+      'mainEntity': [
+        {
+          '@type': 'Question',
+          'name': 'Where should I start when investigating incidents?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': 'Make logs your first stop, not your last. Logs have the richest context—stop treating them as a last resort.'
+          }
+        },
+        {
+          '@type': 'Question',
+          'name': 'How can I avoid writing complex log parsing patterns?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': 'Let AI organize and parse your logs. You have better things to do than write Grok patterns manually.'
+          }
+        },
+        {
+          '@type': 'Question',
+          'name': 'How do I find important signals in noisy logs?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': "Surface signals automatically. Don't make humans hunt for needles—let the needles find you."
+          }
+        },
+        {
+          '@type': 'Question',
+          'name': 'What should I alert on to reduce alert fatigue?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': 'Alert on causes, not just symptoms. "CPU is high" is a symptom. "Connection pool exhausted" is a cause.'
+          }
+        },
+        {
+          '@type': 'Question',
+          'name': 'What metrics should I track for incident response?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': 'Measure time to why, not just time to acknowledge. MTTA is vanity. Time to root cause is sanity.'
+          }
+        }
+      ]
     }
   ]
 }
