@@ -19,7 +19,7 @@ export function CTA() {
           </h2>
 
           <p className="text-terminal-muted text-lg mb-8">
-            Everything you just experienced. Available now. Works on your existing logs.
+            Available now. Works on your existing logs.
           </p>
         </motion.div>
 
@@ -73,7 +73,7 @@ export function CTA() {
                 Director of Product Marketing, Observability @ Elastic
               </p>
               <p className="text-terminal-muted text-xs mt-1">
-                Who thinks about this stuff way too much.
+                Observability enthusiast.
               </p>
             </div>
             <div className="flex items-center gap-4">

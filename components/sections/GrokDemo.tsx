@@ -50,7 +50,7 @@ export function GrokDemo() {
 
           <div className="prose prose-invert max-w-none mb-8">
             <p className="text-terminal-muted text-lg">
-              The second problem: even when you find the right logs, the data you need
+              Even when you find the right logs, the data you need
               is buried in a message blob.
             </p>
             <p className="text-terminal-muted">
@@ -62,7 +62,7 @@ export function GrokDemo() {
               don&apos;t break production.
             </p>
             <p className="text-terminal-text font-medium">
-              What if AI wrote them for you?
+              AI writes them for you.
             </p>
           </div>
         </motion.div>

@@ -44,15 +44,14 @@ export function Hook() {
               data before you even know if it&apos;s real.
             </p>
             <p>
-              By the time you find the answer — <em>if</em> you find it — the
-              incident is either resolved or escalated. You&apos;re exhausted. Your
-              team is exhausted.
+              By the time you find the answer, the incident is either resolved
+              or escalated. You&apos;re exhausted. Your team is exhausted.
             </p>
             <p className="text-terminal-text font-medium">
-              This isn&apos;t sustainable. But you&apos;ve accepted it as normal.
+              You&apos;ve accepted this as normal.
             </p>
             <p className="text-terminal-accent text-2xl font-bold mt-8">
-              It doesn&apos;t have to be.
+              There&apos;s a better way.
             </p>
           </div>
         </motion.div>

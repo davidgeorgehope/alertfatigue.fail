@@ -28,9 +28,8 @@ export function LogProblem() {
           className="mb-8"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-terminal-text mb-4">
-            The answer is in your logs.
-            <br />
-            <span className="text-terminal-error">But you&apos;ve been trained to ignore them.</span>
+            The answer is in your logs.{' '}
+            <span className="text-terminal-error">Somewhere.</span>
           </h2>
 
         </motion.div>
@@ -72,7 +71,7 @@ export function LogProblem() {
           viewport={{ once: true }}
           className="text-center text-terminal-muted mt-6"
         >
-          This is what you see. Every. Single. Time.
+          5,000 lines per second. Good luck.
         </motion.p>
       </div>
     </section>

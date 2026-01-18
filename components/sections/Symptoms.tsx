@@ -380,9 +380,8 @@ export function Symptoms() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-terminal-text mb-4">
-            Alert fatigue isn&apos;t a you problem.
-            <br />
-            <span className="text-terminal-accent">It&apos;s a system problem.</span>
+            Alert fatigue is a{' '}
+            <span className="text-terminal-accent">system problem.</span>
           </h2>
 
         </motion.div>

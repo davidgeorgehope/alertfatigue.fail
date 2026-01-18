@@ -46,16 +46,15 @@ export function LogSorting() {
 
           <div className="prose prose-invert max-w-none mb-8">
             <p className="text-terminal-muted text-lg">
-              The first problem: your logs are chaos. Different formats, different services,
-              different schemas, all dumped into the same bucket.
+              Your logs are chaos. Different formats, different services,
+              different schemas, all in the same bucket.
             </p>
             <p className="text-terminal-text font-medium">
-              What if they organized themselves?
+              AI organizes them automatically.
             </p>
             <p className="text-terminal-muted">
-              AI can identify patterns in your logs that you can&apos;t see. Using &quot;log format
-              fingerprinting,&quot; it recognizes the structure of each log line and groups similar
-              logs together.
+              Using log format fingerprinting, AI recognizes the structure of each log line
+              and groups similar logs together.
             </p>
             <p className="text-terminal-muted">
               No manual tagging. No brittle pipelines. No regex.

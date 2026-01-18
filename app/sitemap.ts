@@ -9,6 +9,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: 'https://alertfatigue.fail/index.md',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
       url: 'https://alertfatigue.fail/#symptoms',
       lastModified: new Date(),
       changeFrequency: 'weekly',

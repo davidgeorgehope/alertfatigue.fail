@@ -249,7 +249,7 @@ export function FutileSearch() {
               {/* The punchline */}
               <div className="border-t border-terminal-border pt-6">
                 <p className="text-lg text-terminal-text mb-4">
-                  <strong>This is what your team does every day.</strong>
+                  <strong>Your team does this 12 times a week.</strong>
                 </p>
                 <a
                   href="#ai-analysis"

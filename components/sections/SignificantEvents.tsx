@@ -83,26 +83,25 @@ export function SignificantEvents() {
 
           <div className="prose prose-invert max-w-none mb-8">
             <p className="text-terminal-muted text-lg">
-              The third problem: even organized, parsed logs are still a lot of logs.
+              Even organized, parsed logs are still a lot of logs.
             </p>
             <p className="text-terminal-muted">
-              You&apos;re not looking for a log. You&apos;re looking for the <em>important</em> log.
-              The error. The anomaly. The thing that&apos;s actually broken.
+              You need the error, the anomaly, the thing that broke.
             </p>
             <p className="text-terminal-text font-medium">
-              What if your logs told you what matters?
+              Significant Events surfaces them automatically.
             </p>
             <p className="text-terminal-muted">
-              Significant Events uses AI to automatically surface the signals you care about:
+              AI identifies the signals you care about:
             </p>
             <ul className="text-terminal-muted">
               <li>Errors and exceptions</li>
               <li>Anomalous patterns</li>
               <li>Critical warnings</li>
-              <li>Things that changed</li>
+              <li>State changes</li>
             </ul>
             <p className="text-terminal-accent font-medium">
-              You don&apos;t hunt for the needle. The needle finds you.
+              The needle finds you.
             </p>
           </div>
         </motion.div>

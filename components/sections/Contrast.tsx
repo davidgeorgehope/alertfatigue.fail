@@ -41,7 +41,7 @@ export function Contrast() {
             Same incident. Two realities.
           </h2>
           <p className="text-terminal-muted text-lg">
-            Let&apos;s go back to that 3am alert. Same incident. Two ways to handle it.
+            That 3am alert. Two ways to handle it.
           </p>
         </motion.div>
 

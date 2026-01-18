@@ -130,6 +130,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link
+          rel="alternate"
+          type="text/markdown"
+          href="https://alertfatigue.fail/index.md"
+          title="Markdown version"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

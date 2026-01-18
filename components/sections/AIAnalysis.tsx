@@ -109,26 +109,23 @@ export function AIAnalysis() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-terminal-text mb-4">
-            There&apos;s a map buried in your logs. You just can&apos;t see it.
+            Your logs contain a service map.
           </h2>
           <div className="prose prose-invert max-w-none mb-8">
             <p className="text-terminal-muted text-lg">
-              What if you didn&apos;t have to search? What if an AI could read your logs — all of them —
-              and just... tell you what&apos;s happening?
+              An LLM can read every log line and tell you what&apos;s happening.
             </p>
             <p className="text-terminal-muted">
-              Your logs aren&apos;t just noise. They&apos;re a record of every interaction, every call,
-              every failure in your system. Hidden in that chaos is:
+              Your logs record every interaction, every call, every failure. Hidden in that chaos:
             </p>
             <ul className="text-terminal-muted">
               <li>Which services talk to which</li>
-              <li>What the normal patterns look like</li>
-              <li>Where things are breaking down right now</li>
+              <li>Normal patterns</li>
+              <li>Where things are breaking right now</li>
             </ul>
             <p className="text-terminal-text font-medium">
-              You can&apos;t see it. It&apos;s buried in unstructured text across dozens of sources.
-              <br />
-              <span className="text-terminal-accent">But an LLM can.</span>
+              Buried in unstructured text across dozens of sources.{' '}
+              <span className="text-terminal-accent">LLMs extract it automatically.</span>
             </p>
           </div>
         </motion.div>
