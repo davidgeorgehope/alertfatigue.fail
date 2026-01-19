@@ -1,0 +1,9 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Disallow private routes
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://alertfatigue.fail/sitemap.xml
