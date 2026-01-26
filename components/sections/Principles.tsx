@@ -3,8 +3,9 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Check, Copy } from 'lucide-react'
+import { Button } from '@/components/ui/Button'
 
-const faqs = [
+const faqs: { question: string; answer: string }[] = [
   {
     question: 'Where should I start when investigating incidents?',
     answer: 'Make logs your first stop, not your last. Logs have the richest context—stop treating them as a last resort.',
@@ -29,6 +30,7 @@ const faqs = [
 
 export function Principles() {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null)
+  const [copiedAll, setCopiedAll] = useState(false)
 
   const copyToClipboard = async (text: string, index: number) => {
     try {
@@ -37,6 +39,19 @@ export function Principles() {
       setTimeout(() => setCopiedIndex(null), 2000)
     } catch (err) {
       console.error('Failed to copy:', err)
+    }
+  }
+
+  const copyAllFaqs = async () => {
+    try {
+      const allText = faqs
+        .map((faq) => `Q: ${faq.question}\nA: ${faq.answer}`)
+        .join('\n\n')
+      await navigator.clipboard.writeText(allText)
+      setCopiedAll(true)
+      setTimeout(() => setCopiedAll(false), 2000)
+    } catch (err) {
+      console.error('Failed to copy all:', err)
     }
   }
 
@@ -78,9 +93,11 @@ export function Principles() {
                   </h3>
                   <p className="text-terminal-muted">{faq.answer}</p>
                 </div>
-                <button
+                <Button
                   onClick={() => copyToClipboard(`Q: ${faq.question}\nA: ${faq.answer}`, idx)}
-                  className="opacity-0 group-hover:opacity-100 transition-opacity p-2 hover:bg-terminal-bg rounded"
+                  variant="ghost"
+                  size="sm"
+                  className="opacity-0 group-hover:opacity-100 transition-opacity p-2"
                   title="Copy to clipboard"
                 >
                   {copiedIndex === idx ? (
@@ -88,7 +105,7 @@ export function Principles() {
                   ) : (
                     <Copy className="w-4 h-4 text-terminal-muted" />
                   )}
-                </button>
+                </Button>
               </div>
             </motion.div>
           ))}
@@ -98,10 +115,27 @@ export function Principles() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-12 text-center"
+          className="mt-12 text-center space-y-4"
         >
+          <Button
+            onClick={copyAllFaqs}
+            variant="secondary"
+            size="sm"
+          >
+            {copiedAll ? (
+              <>
+                <Check className="w-4 h-4 text-terminal-success mr-2" />
+                <span className="text-terminal-success">Copied all FAQs!</span>
+              </>
+            ) : (
+              <>
+                <Copy className="w-4 h-4 text-terminal-muted mr-2" />
+                <span className="text-terminal-muted">Copy all FAQs</span>
+              </>
+            )}
+          </Button>
           <p className="text-terminal-muted text-sm">
-            Click any question to copy it. Share with your team.
+            Click any question to copy it individually, or copy all to share with your team.
           </p>
         </motion.div>
       </div>

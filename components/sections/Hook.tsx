@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Bell, AlertTriangle } from 'lucide-react'
+import { Button } from '@/components/ui/Button'
 
 export function Hook() {
   const [showNotification, setShowNotification] = useState(false)
@@ -16,7 +17,7 @@ export function Hook() {
 
       // Stop vibrating after 2 seconds
       setTimeout(() => setIsVibrating(false), 2000)
-    }, 500)
+    }, 2500)
 
     return () => clearTimeout(timer)
   }, [])
@@ -106,18 +107,22 @@ export function Hook() {
                 </div>
               </div>
               <div className="flex gap-2 mt-3">
-                <button
+                <Button
                   onClick={() => setShowNotification(false)}
-                  className="flex-1 px-3 py-1.5 text-xs bg-terminal-error/20 text-terminal-error rounded-lg hover:bg-terminal-error/30 transition-colors"
+                  variant="danger"
+                  size="xs"
+                  className="flex-1 bg-terminal-error/20 hover:bg-terminal-error/30"
                 >
                   Acknowledge
-                </button>
-                <button
+                </Button>
+                <Button
                   onClick={() => setShowNotification(false)}
-                  className="flex-1 px-3 py-1.5 text-xs bg-terminal-surface text-terminal-muted rounded-lg hover:bg-terminal-border/50 transition-colors"
+                  variant="secondary"
+                  size="xs"
+                  className="flex-1"
                 >
                   Snooze
-                </button>
+                </Button>
               </div>
             </div>
           </motion.div>

@@ -122,21 +122,33 @@ export function FutileSearch() {
                 />
               </div>
 
-              {/* Search hints */}
-              {!hasStarted && (
-                <div className="flex flex-wrap gap-3 items-center">
-                  <span className="text-terminal-muted">Try:</span>
-                  {['error', 'checkout', 'payment', 'timeout'].map((term) => (
-                    <button
-                      key={term}
-                      onClick={() => handleSearch(term)}
-                      className="px-4 py-2 text-sm font-medium bg-terminal-surface border border-terminal-accent/50 text-terminal-accent rounded-lg hover:bg-terminal-accent/10 transition-colors"
+              {/* Search hints and give up button */}
+              <div className="flex flex-wrap gap-3 items-center">
+                <span className="text-terminal-muted">Try:</span>
+                {['error', 'checkout', 'payment', 'timeout'].map((term) => (
+                  <Button
+                    key={term}
+                    onClick={() => handleSearch(term)}
+                    variant="secondary"
+                    size="sm"
+                    className="border-terminal-accent/50 text-terminal-accent hover:bg-terminal-accent/10"
+                  >
+                    {term}
+                  </Button>
+                ))}
+                {hasStarted && elapsedSeconds < 30 && (
+                  <>
+                    <span className="text-terminal-muted">or</span>
+                    <Button
+                      onClick={handleGiveUp}
+                      variant="secondary"
+                      size="sm"
                     >
-                      {term}
-                    </button>
-                  ))}
-                </div>
-              )}
+                      Give up
+                    </Button>
+                  </>
+                )}
+              </div>
 
               {/* Log viewer */}
               <div className="terminal-window">
@@ -188,17 +200,6 @@ export function FutileSearch() {
                 </motion.div>
               )}
 
-              {/* Immediate give up for demo purposes */}
-              {hasStarted && elapsedSeconds < 30 && (
-                <div className="text-center">
-                  <button
-                    onClick={handleGiveUp}
-                    className="text-terminal-muted text-sm hover:text-terminal-text transition-colors"
-                  >
-                    Skip to reveal →
-                  </button>
-                </div>
-              )}
             </motion.div>
           ) : (
             <motion.div

@@ -69,7 +69,7 @@ export function LogSorting() {
         <div className="flex justify-center mb-8">
           <Button
             onClick={() => setIsSorted(!isSorted)}
-            variant={isSorted ? 'primary' : 'secondary'}
+            variant="primary"
             size="lg"
           >
             {isSorted ? (

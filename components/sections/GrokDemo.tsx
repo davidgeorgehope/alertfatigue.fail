@@ -188,13 +188,15 @@ export function GrokDemo() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
                 >
-                  <button
+                  <Button
                     onClick={() => setShowGrok(!showGrok)}
-                    className="flex items-center gap-2 text-terminal-muted hover:text-terminal-text transition-colors text-sm"
+                    variant="ghost"
+                    size="sm"
+                    className="flex items-center gap-2"
                   >
                     {showGrok ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                     {showGrok ? 'Hide' : 'Show'} generated Grok pattern
-                  </button>
+                  </Button>
 
                   <AnimatePresence>
                     {showGrok && (

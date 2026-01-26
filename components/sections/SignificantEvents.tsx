@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Zap, AlertCircle, AlertTriangle, TrendingUp, ChevronDown, ChevronUp } from 'lucide-react'
 import { Badge } from '@/components/ui/Badge'
+import { Button } from '@/components/ui/Button'
 import { generateLogs, LogEntry } from '@/lib/logs'
 
 interface SignificantEvent {
@@ -108,13 +109,15 @@ export function SignificantEvents() {
 
         {/* Before/After toggle */}
         <div className="mb-6">
-          <button
+          <Button
             onClick={() => setShowAll(!showAll)}
-            className="flex items-center gap-2 text-terminal-muted hover:text-terminal-text transition-colors"
+            variant="ghost"
+            size="sm"
+            className="flex items-center gap-2"
           >
             <Zap className={`w-5 h-5 ${showAll ? 'text-terminal-muted' : 'text-terminal-accent'}`} />
             <span>{showAll ? 'Show significant events only' : 'Showing significant events'}</span>
-          </button>
+          </Button>
         </div>
 
         <AnimatePresence mode="wait">

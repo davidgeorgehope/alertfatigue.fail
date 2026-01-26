@@ -32,7 +32,7 @@ export function CTA() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
         >
           <a
-            href="https://www.elastic.co/elasticsearch/streams"
+            href="https://cloud.elastic.co/serverless-registration?onboarding_token=observability"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -42,12 +42,12 @@ export function CTA() {
             </Button>
           </a>
           <a
-            href="https://www.elastic.co/observability-labs"
+            href="https://www.elastic.co/observability-labs/blog/elastic-observability-streams-ai-logs-investigations"
             target="_blank"
             rel="noopener noreferrer"
           >
             <Button variant="secondary" size="lg">
-              Read the blog posts
+              Read the blog
               <ExternalLink className="w-4 h-4 ml-2" />
             </Button>
           </a>
@@ -104,11 +104,23 @@ export function CTA() {
           viewport={{ once: true }}
           className="mt-16 pt-8 border-t border-terminal-border"
         >
-          <p className="text-terminal-muted text-xs">
+          <a
+            href="https://www.elastic.co/observability"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center mb-6 group"
+          >
+            <img
+              src="/elastic-logo.svg"
+              alt="Powered by Elastic"
+              className="h-10 opacity-90 group-hover:opacity-100 transition-opacity"
+            />
+          </a>
+          <p className="text-terminal-muted text-sm mb-2">
             alertfatigue.fail — An interactive exploration of modern observability.
           </p>
-          <p className="text-terminal-muted text-xs mt-1">
-            Built with Next.js, Tailwind CSS, and too much caffeine.
+          <p className="text-terminal-muted text-xs">
+            Built with Next.js, Tailwind CSS, and Claude Code.
           </p>
         </motion.div>
       </div>

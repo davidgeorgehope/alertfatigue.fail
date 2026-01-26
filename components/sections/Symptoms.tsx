@@ -478,9 +478,9 @@ export function Symptoms() {
               </span>
             </div>
             {step >= 0 && (
-              <button onClick={handleReset} className="text-gray-500 hover:text-gray-300 p-1">
+              <Button onClick={handleReset} variant="ghost" className="text-gray-500 hover:text-gray-300 p-1">
                 <RotateCcw className="w-4 h-4" />
-              </button>
+              </Button>
             )}
           </div>
 

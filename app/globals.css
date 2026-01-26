@@ -5,12 +5,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
-  --terminal-bg: #0d1117;
-  --terminal-surface: #161b22;
-  --terminal-border: #30363d;
+  --terminal-bg: #0B1628;
+  --terminal-surface: #101D2F;
+  --terminal-border: #243147;
   --terminal-text: #c9d1d9;
-  --terminal-muted: #8b949e;
-  --terminal-accent: #58a6ff;
+  --terminal-muted: #6A7FA0;
+  --terminal-accent: #61A2FF;
   --terminal-error: #f85149;
   --terminal-warning: #d29922;
   --terminal-success: #3fb950;
@@ -66,7 +66,7 @@ body {
 }
 
 .glow-blue {
-  box-shadow: 0 0 20px rgba(88, 166, 255, 0.4);
+  box-shadow: 0 0 20px rgba(97, 162, 255, 0.4);
 }
 
 /* Terminal window styling */
@@ -123,7 +123,7 @@ body {
 .search-input:focus {
   outline: none;
   border-color: var(--terminal-accent);
-  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.2);
+  box-shadow: 0 0 0 3px rgba(97, 162, 255, 0.2);
 }
 
 /* Badge styles */
@@ -152,7 +152,7 @@ body {
 }
 
 .badge-info {
-  background: rgba(88, 166, 255, 0.2);
+  background: rgba(97, 162, 255, 0.2);
   color: var(--terminal-accent);
 }
 
@@ -179,7 +179,7 @@ body {
 
 /* Highlight animation for logs */
 @keyframes highlight-fade {
-  0% { background-color: rgba(88, 166, 255, 0.3); }
+  0% { background-color: rgba(97, 162, 255, 0.3); }
   100% { background-color: transparent; }
 }
 
@@ -199,8 +199,8 @@ body {
 
 /* Search input pulse animation */
 @keyframes search-pulse {
-  0%, 100% { box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.3), 0 0 20px rgba(88, 166, 255, 0.1); }
-  50% { box-shadow: 0 0 0 6px rgba(88, 166, 255, 0.2), 0 0 30px rgba(88, 166, 255, 0.15); }
+  0%, 100% { box-shadow: 0 0 0 3px rgba(97, 162, 255, 0.3), 0 0 20px rgba(97, 162, 255, 0.1); }
+  50% { box-shadow: 0 0 0 6px rgba(97, 162, 255, 0.2), 0 0 30px rgba(97, 162, 255, 0.15); }
 }
 
 .search-input-prominent {
@@ -209,13 +209,13 @@ body {
 
 .search-input-prominent:focus {
   animation: none;
-  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.4);
+  box-shadow: 0 0 0 3px rgba(97, 162, 255, 0.4);
 }
 
 /* CTA button glow animation */
 @keyframes cta-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(88, 166, 255, 0.4); }
-  50% { box-shadow: 0 0 40px rgba(88, 166, 255, 0.6); }
+  0%, 100% { box-shadow: 0 0 20px rgba(97, 162, 255, 0.4); }
+  50% { box-shadow: 0 0 40px rgba(97, 162, 255, 0.6); }
 }
 
 .btn-glow {
@@ -224,5 +224,5 @@ body {
 
 .btn-glow:hover {
   animation: none;
-  box-shadow: 0 0 30px rgba(88, 166, 255, 0.5);
+  box-shadow: 0 0 30px rgba(97, 162, 255, 0.5);
 }

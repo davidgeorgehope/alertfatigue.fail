@@ -8,12 +8,12 @@ module.exports = {
     extend: {
       colors: {
         'terminal': {
-          bg: '#0d1117',
-          surface: '#161b22',
-          border: '#30363d',
+          bg: '#0B1628',
+          surface: '#101D2F',
+          border: '#243147',
           text: '#c9d1d9',
-          muted: '#8b949e',
-          accent: '#58a6ff',
+          muted: '#6A7FA0',
+          accent: '#61A2FF',
           error: '#f85149',
           warning: '#d29922',
           success: '#3fb950',

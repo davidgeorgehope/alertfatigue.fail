@@ -70,40 +70,83 @@ export function SectionNav() {
   }, [isLastSection, scrollToNext])
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-3">
-          {/* Progress dots */}
-          <div className="flex flex-col gap-1.5 bg-terminal-surface/90 backdrop-blur-sm border border-terminal-border rounded-full py-3 px-2">
-            {sections.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  const element = document.getElementById(sections[index].id)
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' })
-                  }
-                }}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === currentSection
-                    ? 'bg-terminal-accent scale-125'
-                    : index < currentSection
-                    ? 'bg-terminal-muted'
-                    : 'bg-terminal-border'
-                }`}
-                title={sections[index].label}
-              />
-            ))}
-          </div>
+    <>
+      {/* Desktop: Floating navigation */}
+      <div className="hidden md:flex fixed bottom-6 right-6 z-50 flex-col items-center gap-3">
+        {/* Progress dots */}
+        <div className="flex flex-col gap-1.5 bg-terminal-surface/90 backdrop-blur-sm border border-terminal-border rounded-full py-3 px-2">
+          {sections.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                const element = document.getElementById(sections[index].id)
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' })
+                }
+              }}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                index === currentSection
+                  ? 'bg-terminal-accent scale-125'
+                  : index < currentSection
+                  ? 'bg-terminal-muted'
+                  : 'bg-terminal-border'
+              }`}
+              title={sections[index].label}
+            />
+          ))}
+        </div>
 
-      {/* Next button */}
+        {/* Next button */}
+        {!isLastSection && (
+          <button
+            onClick={scrollToNext}
+            className="flex items-center gap-1 px-4 py-2 bg-terminal-accent text-terminal-bg font-medium rounded-full hover:bg-terminal-accent/90 transition-colors shadow-lg"
+          >
+            Next
+            <ChevronDown className="w-4 h-4" />
+          </button>
+        )}
+      </div>
+
+      {/* Mobile: Bottom bar navigation */}
       {!isLastSection && (
-        <button
-          onClick={scrollToNext}
-          className="flex items-center gap-1 px-4 py-2 bg-terminal-accent text-terminal-bg font-medium rounded-full hover:bg-terminal-accent/90 transition-colors shadow-lg"
-        >
-          Next
-          <ChevronDown className="w-4 h-4" />
-        </button>
+        <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] bg-terminal-bg/95 backdrop-blur-sm border-t border-terminal-border">
+          <div className="flex items-center justify-between gap-4">
+            {/* Progress indicator */}
+            <div className="flex items-center gap-2">
+              <span className="text-terminal-muted text-sm">
+                {currentSection + 1} / {sections.length}
+              </span>
+              <div className="flex gap-1">
+                {sections.slice(0, 5).map((_, index) => (
+                  <div
+                    key={index}
+                    className={`w-1.5 h-1.5 rounded-full transition-all ${
+                      index === currentSection
+                        ? 'bg-terminal-accent'
+                        : index < currentSection
+                        ? 'bg-terminal-muted'
+                        : 'bg-terminal-border'
+                    }`}
+                  />
+                ))}
+                {sections.length > 5 && (
+                  <span className="text-terminal-muted text-xs ml-1">...</span>
+                )}
+              </div>
+            </div>
+
+            {/* Next button */}
+            <button
+              onClick={scrollToNext}
+              className="flex items-center gap-2 px-6 py-3 bg-terminal-accent text-terminal-bg font-medium rounded-lg hover:bg-terminal-accent/90 transition-colors shadow-lg"
+            >
+              Next
+              <ChevronDown className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
       )}
-    </div>
+    </>
   )
 }
