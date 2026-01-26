@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { ChevronDown } from 'lucide-react'
 
 const sections = [
@@ -19,6 +19,7 @@ const sections = [
 
 export function SectionNav() {
   const [currentSection, setCurrentSection] = useState(0)
+  const isScrollingRef = useRef(false)
 
   // Track current section with Intersection Observer
   useEffect(() => {
@@ -32,7 +33,10 @@ export function SectionNav() {
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
-              setCurrentSection(index)
+              // Only update if not programmatically scrolling
+              if (!isScrollingRef.current) {
+                setCurrentSection(index)
+              }
             }
           })
         },
@@ -52,7 +56,13 @@ export function SectionNav() {
     const nextIndex = Math.min(currentSection + 1, sections.length - 1)
     const nextSection = document.getElementById(sections[nextIndex].id)
     if (nextSection) {
+      isScrollingRef.current = true
       nextSection.scrollIntoView({ behavior: 'smooth' })
+      // Unlock after scroll animation completes (~500-800ms on most browsers)
+      setTimeout(() => {
+        isScrollingRef.current = false
+        setCurrentSection(nextIndex)
+      }, 800)
     }
   }, [currentSection])
 
@@ -81,7 +91,12 @@ export function SectionNav() {
               onClick={() => {
                 const element = document.getElementById(sections[index].id)
                 if (element) {
+                  isScrollingRef.current = true
                   element.scrollIntoView({ behavior: 'smooth' })
+                  setTimeout(() => {
+                    isScrollingRef.current = false
+                    setCurrentSection(index)
+                  }, 800)
                 }
               }}
               className={`w-2 h-2 rounded-full transition-all duration-300 ${

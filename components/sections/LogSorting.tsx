@@ -33,7 +33,7 @@ export function LogSorting() {
 
   return (
     <section className="section bg-terminal-surface/30" id="log-sorting">
-      <div className="max-w-5xl mx-auto w-full">
+      <div className="max-w-4xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
