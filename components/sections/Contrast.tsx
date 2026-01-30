@@ -5,7 +5,7 @@ import { Clock, CheckCircle, XCircle } from 'lucide-react'
 
 const realityA = [
   { step: 'Alert fires', time: '0:00', cumulative: 0 },
-  { step: 'Check PagerDuty', time: '0:30', cumulative: 0.5 },
+  { step: 'Check on-call alert', time: '0:30', cumulative: 0.5 },
   { step: 'Open Grafana', time: '1:00', cumulative: 1 },
   { step: 'Check metrics dashboard', time: '3:00', cumulative: 3 },
   { step: 'Open Datadog', time: '5:00', cumulative: 5 },

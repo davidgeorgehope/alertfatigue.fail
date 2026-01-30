@@ -209,7 +209,7 @@ export const sections: Section[] = [
     interactive: {
       description: 'Side-by-side timeline comparison of traditional vs AI-powered incident response.',
       keyInsights: [
-        'Reality A (Today): Alert → PagerDuty → Grafana → Datadog → Splunk → Multiple searches → 34 minutes',
+        'Reality A (Today): Alert → On-call alert → Grafana → Datadog → Splunk → Multiple searches → 34 minutes',
         'Reality B (AI): Alert → Open logs → See Significant Event → Click for context → 90 seconds',
         '23x faster time to root cause',
       ],

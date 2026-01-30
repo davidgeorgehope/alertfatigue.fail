@@ -95,7 +95,7 @@ export function Hook() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs text-terminal-muted">PagerDuty</span>
+                    <span className="text-xs text-terminal-muted">On-Call Alert</span>
                     <span className="text-xs text-terminal-muted">now</span>
                   </div>
                   <p className="text-sm font-medium text-terminal-error mb-1">
