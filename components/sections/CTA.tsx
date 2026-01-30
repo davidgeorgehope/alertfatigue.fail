@@ -123,6 +123,63 @@ export function CTA() {
             Built with Next.js, Tailwind CSS, and Claude Code.
           </p>
         </motion.div>
+
+        {/* Legal Footer */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-12 pt-8 border-t border-terminal-border"
+        >
+          <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mb-6">
+            <a
+              href="https://www.elastic.co/legal/trademarks"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-terminal-muted hover:text-terminal-accent text-xs transition-colors"
+            >
+              Trademarks
+            </a>
+            <a
+              href="https://www.elastic.co/legal/terms-of-use"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-terminal-muted hover:text-terminal-accent text-xs transition-colors"
+            >
+              Terms of Use
+            </a>
+            <a
+              href="https://www.elastic.co/legal/privacy-statement"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-terminal-muted hover:text-terminal-accent text-xs transition-colors"
+            >
+              Privacy
+            </a>
+            <a
+              href="/sitemap.xml"
+              className="text-terminal-muted hover:text-terminal-accent text-xs transition-colors"
+            >
+              Sitemap
+            </a>
+          </nav>
+
+          <p className="text-terminal-muted text-xs mb-4">
+            &copy; 2026. Elasticsearch B.V. All Rights Reserved
+          </p>
+
+          <div className="text-terminal-muted text-[10px] leading-relaxed max-w-2xl mx-auto space-y-2">
+            <p>
+              This website and all associated content, software, discussion forums, products, and services are intended for professional use only. No consumer use of this website or its content is intended or directed.
+            </p>
+            <p>
+              Elastic, Elasticsearch, and other related marks are trademarks, logos, or registered trademarks of Elasticsearch B.V. in the United States and other countries.
+            </p>
+            <p>
+              Apache, Apache Lucene, Apache Hadoop, Hadoop, HDFS and the yellow elephant logo are trademarks of the Apache Software Foundation in the United States and/or other countries. All other brand names, product names, or trademarks belong to their respective owners.
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   )
