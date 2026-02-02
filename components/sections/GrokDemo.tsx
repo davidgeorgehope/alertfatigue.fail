@@ -45,26 +45,16 @@ export function GrokDemo() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-terminal-text mb-4">
-            Stop fighting with Grok.
+            Do I really need to write grok patterns?
           </h2>
 
-          <div className="prose prose-invert max-w-none mb-8">
-            <p className="text-terminal-muted text-lg">
-              Even when you find the right logs, the data you need
-              is buried in a message blob.
-            </p>
-            <p className="text-terminal-muted">
-              <code>timestamp?</code> Buried. <code>log.level?</code> Buried.{' '}
-              <code>user.id?</code> Buried.
-            </p>
-            <p className="text-terminal-muted">
-              Traditionally, you&apos;d write Grok patterns. Regex. Ingest pipelines. Pray you
-              don&apos;t break production.
-            </p>
-            <p className="text-terminal-text font-medium">
-              AI writes them for you.
-            </p>
-          </div>
+          <p className="text-terminal-muted text-lg mb-4">
+            The field you need is right there in the log but it&apos;s trapped in a message string you can&apos;t query, can&apos;t alert on, can&apos;t dashboard. So you&apos;re maintaining brittle regex that breaks every time a dev changes the format.
+          </p>
+          <p className="text-terminal-muted text-lg mb-8">
+            AI generates the parsing pattern from the structure itself.{' '}
+            <span className="text-terminal-accent">Fields extracted, typed, queryable. Format changes, pattern adapts.</span>
+          </p>
         </motion.div>
 
         {/* Demo */}

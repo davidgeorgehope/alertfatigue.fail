@@ -13,7 +13,6 @@ const sections = [
   { id: 'grok-demo', label: 'Parsing' },
   { id: 'significant-events', label: 'Events' },
   { id: 'contrast', label: 'Comparison' },
-  { id: 'principles', label: 'Principles' },
   { id: 'cta', label: 'Try It' },
 ]
 

@@ -91,10 +91,30 @@ const logTemplates = {
   ],
 }
 
+// Seeded PRNG (mulberry32) for deterministic output across server/client
+function createSeededRandom(seed: number) {
+  return function () {
+    seed |= 0
+    seed = (seed + 0x6d2b79f5) | 0
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed)
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+  }
+}
+
+let seededRandom = createSeededRandom(42)
+
 // Random ID generators
-const randomId = () => Math.random().toString(36).substring(2, 10)
-const randomInt = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min
-const randomFloat = (min: number, max: number) => (Math.random() * (max - min) + min).toFixed(2)
+const randomId = () => {
+  let result = ''
+  const chars = '0123456789abcdefghijklmnopqrstuvwxyz'
+  for (let i = 0; i < 8; i++) {
+    result += chars[Math.floor(seededRandom() * chars.length)]
+  }
+  return result
+}
+const randomInt = (min: number, max: number) => Math.floor(seededRandom() * (max - min + 1)) + min
+const randomFloat = (min: number, max: number) => (seededRandom() * (max - min) + min).toFixed(2)
 
 // Generate a random timestamp within a 2-hour incident window
 function generateTimestamp(baseTime: Date, offsetMs: number): string {
@@ -191,6 +211,8 @@ function determineCategory(service: string, message: string): LogEntry['category
 
 // Generate the full log dataset
 export function generateLogs(): LogEntry[] {
+  // Reset seed for deterministic output (fixes SSR hydration mismatch)
+  seededRandom = createSeededRandom(42)
   const logs: LogEntry[] = []
   const baseTime = new Date('2024-12-20T03:00:00.000Z')
   const totalLogs = 1000

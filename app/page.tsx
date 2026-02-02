@@ -9,7 +9,6 @@ import { LogSorting } from '@/components/sections/LogSorting'
 import { GrokDemo } from '@/components/sections/GrokDemo'
 import { SignificantEvents } from '@/components/sections/SignificantEvents'
 import { Contrast } from '@/components/sections/Contrast'
-import { Principles } from '@/components/sections/Principles'
 import { CTA } from '@/components/sections/CTA'
 import { SectionNav } from '@/components/SectionNav'
 
@@ -25,7 +24,6 @@ export default function Home() {
       <GrokDemo />
       <SignificantEvents />
       <Contrast />
-      <Principles />
       <CTA />
       <SectionNav />
     </main>

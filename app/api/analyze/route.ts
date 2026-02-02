@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import Anthropic from '@anthropic-ai/sdk'
 import { trace, SpanStatusCode } from '@opentelemetry/api'
 
 const tracer = trace.getTracer('analyze-api')
@@ -59,110 +58,33 @@ export async function POST(request: NextRequest) {
 
       span.setAttribute('analyze.log_count', logs.length)
 
-      const apiKey = process.env.ANTHROPIC_API_KEY
-      if (!apiKey) {
-        span.setAttribute('analyze.fallback', true)
-        span.setStatus({ code: SpanStatusCode.OK })
-        span.end()
-        return NextResponse.json({
-          diagram: getFallbackDiagram(),
-          analysis: getFallbackAnalysis(),
-          fallback: true,
-        })
-      }
+      // Simulate LLM processing time
+      await new Promise((resolve) => setTimeout(resolve, 800 + Math.random() * 400))
 
-      const client = new Anthropic({ apiKey })
+      span.setAttribute('analyze.simulated', true)
+      span.setAttribute('analyze.success', true)
+      span.setStatus({ code: SpanStatusCode.OK })
+      span.end()
 
-      const logSample = logs.slice(0, 200).map((log: { raw: string }) => log.raw).join('\n')
-
-      const message = await client.messages.create({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1024,
-        messages: [
-          {
-            role: 'user',
-            content: `Analyze these application logs and create a Mermaid flowchart showing the service architecture and the error flow. Identify the root cause of any issues.
-
-LOGS:
-${logSample}
-
-Respond with ONLY a JSON object in this exact format:
-{
-  "diagram": "flowchart LR\\n    A[service1] --> B[service2]\\n    ...",
-  "analysis": {
-    "rootCause": "Brief description of root cause",
-    "affectedServices": ["service1", "service2"],
-    "severity": "critical|high|medium|low",
-    "annotations": [
-      {"service": "service-name", "message": "issue description", "severity": "error|warning|info"}
-    ]
-  }
-}
-
-The diagram should:
-1. Show all services mentioned in the logs
-2. Highlight the error path in red using :::error class
-3. Use flowchart LR (left-to-right) layout
-4. Include databases/external services if mentioned`,
-          },
-        ],
+      return NextResponse.json({
+        diagram: getSimulatedDiagram(),
+        analysis: getSimulatedAnalysis(),
       })
-
-      span.setAttribute('analyze.model_used', 'claude-sonnet-4-20250514')
-
-      const content = message.content[0]
-      if (content.type !== 'text') {
-        throw new Error('Unexpected response type')
-      }
-
-      try {
-        const result = JSON.parse(content.text)
-        span.setAttribute('analyze.success', true)
-        span.setStatus({ code: SpanStatusCode.OK })
-        span.end()
-        return NextResponse.json(result)
-      } catch {
-        const diagramMatch = content.text.match(/```mermaid\n([\s\S]*?)```/)
-        if (diagramMatch) {
-          span.setAttribute('analyze.extracted_diagram', true)
-          span.setStatus({ code: SpanStatusCode.OK })
-          span.end()
-          return NextResponse.json({
-            diagram: diagramMatch[1],
-            analysis: {
-              rootCause: 'Analysis extracted from logs',
-              affectedServices: [],
-              severity: 'high',
-              annotations: [],
-            },
-          })
-        }
-
-        span.setAttribute('analyze.fallback', true)
-        span.setStatus({ code: SpanStatusCode.OK })
-        span.end()
-        return NextResponse.json({
-          diagram: getFallbackDiagram(),
-          analysis: getFallbackAnalysis(),
-          fallback: true,
-        })
-      }
     } catch (error) {
       console.error('Analysis error:', error)
       span.recordException(error as Error)
       span.setStatus({ code: SpanStatusCode.ERROR, message: 'Analysis failed' })
       span.end()
       return NextResponse.json({
-        diagram: getFallbackDiagram(),
-        analysis: getFallbackAnalysis(),
-        fallback: true,
+        diagram: getSimulatedDiagram(),
+        analysis: getSimulatedAnalysis(),
         error: 'Analysis failed, showing demo data',
       })
     }
   })
 }
 
-function getFallbackDiagram(): string {
+function getSimulatedDiagram(): string {
   return `flowchart LR
     subgraph Frontend
         FE[frontend]
@@ -198,7 +120,7 @@ function getFallbackDiagram(): string {
     linkStyle 6 stroke:#f85149,stroke-width:3px`
 }
 
-function getFallbackAnalysis() {
+function getSimulatedAnalysis() {
   return {
     rootCause: 'Payment gateway timeout due to upstream Stripe API failure',
     affectedServices: ['checkout-service', 'payment-gateway', 'stripe-api'],

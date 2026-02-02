@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Check, Copy } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Check, Copy, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 
 const faqs: { question: string; answer: string }[] = [
@@ -28,9 +28,14 @@ const faqs: { question: string; answer: string }[] = [
   },
 ]
 
-export function Principles() {
+export function FAQAccordion() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null)
   const [copiedAll, setCopiedAll] = useState(false)
+
+  const toggle = (idx: number) => {
+    setOpenIndex(openIndex === idx ? null : idx)
+  }
 
   const copyToClipboard = async (text: string, index: number) => {
     try {
@@ -56,89 +61,89 @@ export function Principles() {
   }
 
   return (
-    <section className="section bg-terminal-surface/30" id="principles">
-      <div className="max-w-3xl mx-auto w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-terminal-text mb-4">
-            Frequently asked questions
-          </h2>
-          <p className="text-terminal-muted text-lg">
-            How to escape alert fatigue and transform your incident response.
-          </p>
-        </motion.div>
-
-        <div className="space-y-6">
-          {faqs.map((faq, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="group relative bg-terminal-surface border border-terminal-border rounded-lg p-6 hover:border-terminal-accent/50 transition-colors"
-            >
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-terminal-accent/20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-terminal-accent font-bold">Q</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-terminal-text mb-3">
-                    {faq.question}
-                  </h3>
-                  <p className="text-terminal-muted">{faq.answer}</p>
-                </div>
-                <Button
-                  onClick={() => copyToClipboard(`Q: ${faq.question}\nA: ${faq.answer}`, idx)}
-                  variant="ghost"
-                  size="sm"
-                  className="opacity-0 group-hover:opacity-100 transition-opacity p-2"
-                  title="Copy to clipboard"
-                >
-                  {copiedIndex === idx ? (
-                    <Check className="w-4 h-4 text-terminal-success" />
-                  ) : (
-                    <Copy className="w-4 h-4 text-terminal-muted" />
-                  )}
-                </Button>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-12 text-center space-y-4"
-        >
-          <Button
-            onClick={copyAllFaqs}
-            variant="secondary"
-            size="sm"
+    <div>
+      <div className="space-y-3">
+        {faqs.map((faq, idx) => (
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: idx * 0.08 }}
+            className="group bg-terminal-surface border border-terminal-border rounded-lg hover:border-terminal-accent/50 transition-colors"
           >
-            {copiedAll ? (
-              <>
-                <Check className="w-4 h-4 text-terminal-success mr-2" />
-                <span className="text-terminal-success">Copied all FAQs!</span>
-              </>
-            ) : (
-              <>
-                <Copy className="w-4 h-4 text-terminal-muted mr-2" />
-                <span className="text-terminal-muted">Copy all FAQs</span>
-              </>
-            )}
-          </Button>
-          <p className="text-terminal-muted text-sm">
-            Click any question to copy it individually, or copy all to share with your team.
-          </p>
-        </motion.div>
+            <button
+              onClick={() => toggle(idx)}
+              className="w-full flex items-center gap-4 p-5 text-left"
+            >
+              <div className="w-8 h-8 rounded-full bg-terminal-accent/20 flex items-center justify-center flex-shrink-0">
+                <span className="text-terminal-accent font-bold text-sm">Q</span>
+              </div>
+              <h3 className="flex-1 text-base font-semibold text-terminal-text">
+                {faq.question}
+              </h3>
+              <motion.div
+                animate={{ rotate: openIndex === idx ? 180 : 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <ChevronDown className="w-5 h-5 text-terminal-muted flex-shrink-0" />
+              </motion.div>
+            </button>
+
+            <AnimatePresence initial={false}>
+              {openIndex === idx && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.25, ease: 'easeInOut' }}
+                  className="overflow-hidden"
+                >
+                  <div className="px-5 pb-5 pl-[4.25rem] flex items-start gap-3">
+                    <p className="text-terminal-muted flex-1">{faq.answer}</p>
+                    <Button
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        copyToClipboard(`Q: ${faq.question}\nA: ${faq.answer}`, idx)
+                      }}
+                      variant="ghost"
+                      size="sm"
+                      className="opacity-0 group-hover:opacity-100 transition-opacity p-2 flex-shrink-0"
+                      title="Copy to clipboard"
+                    >
+                      {copiedIndex === idx ? (
+                        <Check className="w-4 h-4 text-terminal-success" />
+                      ) : (
+                        <Copy className="w-4 h-4 text-terminal-muted" />
+                      )}
+                    </Button>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        ))}
       </div>
-    </section>
+
+      <div className="mt-8 text-center">
+        <Button
+          onClick={copyAllFaqs}
+          variant="secondary"
+          size="sm"
+        >
+          {copiedAll ? (
+            <>
+              <Check className="w-4 h-4 text-terminal-success mr-2" />
+              <span className="text-terminal-success">Copied all FAQs!</span>
+            </>
+          ) : (
+            <>
+              <Copy className="w-4 h-4 text-terminal-muted mr-2" />
+              <span className="text-terminal-muted">Copy all FAQs</span>
+            </>
+          )}
+        </Button>
+      </div>
+    </div>
   )
 }

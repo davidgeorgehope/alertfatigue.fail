@@ -41,28 +41,16 @@ export function LogSorting() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-terminal-text mb-4">
-            Logs that sort themselves.
+            Can I make sense of this mess without writing pipelines?
           </h2>
 
-          <div className="prose prose-invert max-w-none mb-8">
-            <p className="text-terminal-muted text-lg">
-              Your logs are chaos. Different formats, different services,
-              different schemas, all in the same bucket.
-            </p>
-            <p className="text-terminal-text font-medium">
-              AI organizes them automatically.
-            </p>
-            <p className="text-terminal-muted">
-              Using log format fingerprinting, AI recognizes the structure of each log line
-              and groups similar logs together.
-            </p>
-            <p className="text-terminal-muted">
-              No manual tagging. No brittle pipelines. No regex.
-            </p>
-            <p className="text-terminal-accent font-medium">
-              94% accuracy. Automatic. Instant.
-            </p>
-          </div>
+          <p className="text-terminal-muted text-lg mb-4">
+            JSON, plaintext, key-value, Kubernetes. Four formats interleaved, and you&apos;re mentally parsing each line while the incident clock ticks.
+          </p>
+          <p className="text-terminal-muted text-lg mb-8">
+            AI fingerprints and groups them automatically. Chaotic stream becomes categorized views you can actually filter.{' '}
+            <span className="text-terminal-accent">No pipeline code to maintain.</span>
+          </p>
         </motion.div>
 
         {/* Toggle button */}

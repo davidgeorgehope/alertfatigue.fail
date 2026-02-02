@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, ExternalLink, Linkedin, Twitter } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
+import { FAQAccordion } from '@/components/sections/Principles'
 
 export function CTA() {
   return (
@@ -95,6 +96,25 @@ export function CTA() {
               </a>
             </div>
           </div>
+        </motion.div>
+
+        {/* FAQ Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="mt-12 pt-8 border-t border-terminal-border text-left"
+        >
+          <div className="text-center mb-8">
+            <h3 className="text-2xl md:text-3xl font-bold text-terminal-text mb-3">
+              Frequently asked questions
+            </h3>
+            <p className="text-terminal-muted">
+              How to escape alert fatigue and transform your incident response.
+            </p>
+          </div>
+          <FAQAccordion />
         </motion.div>
 
         {/* Footer */}
